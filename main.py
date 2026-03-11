@@ -22,9 +22,8 @@ print("=" * 60)
 print("PRODUCT DEMAND PREDICTION PROJECT")
 print("=" * 60)
 
-# ============================================================
-# 1. LOAD THE DATASET
-# ============================================================
+
+# LOAD DATASET
 print("\n1. LOADING DATASET...")
 print("-" * 40)
 
@@ -36,9 +35,8 @@ print(f"Shape: {df.shape[0]} rows, {df.shape[1]} columns")
 print(f"\nFirst 5 rows:")
 print(df.head())
 
-# ============================================================
-# 2. BASIC DATA CLEANING
-# ============================================================
+
+# BASIC DATA CLEANING
 print("\n2. DATA CLEANING...")
 print("-" * 40)
 
@@ -52,9 +50,7 @@ print(f"\nDuplicate rows: {df.duplicated().sum()}")
 df = df.drop_duplicates()
 print(f"After removing duplicates: {df.shape[0]} rows")
 
-# ============================================================
-# 3. EXPLORATORY DATA ANALYSIS (EDA)
-# ============================================================
+# EDA
 print("\n3. EXPLORATORY DATA ANALYSIS...")
 print("-" * 40)
 
@@ -108,9 +104,8 @@ print("✓ Saved: plots/correlation_heatmap.png")
 
 print("\nAll plots saved in 'plots/' folder!")
 
-# ============================================================
-# 4. FEATURE ENGINEERING
-# ============================================================
+
+# FEATURE ENGINEERING
 print("\n4. FEATURE ENGINEERING...")
 print("-" * 40)
 
@@ -121,9 +116,7 @@ print("Created new feature: price_per_unit = Sales / Quantity")
 print(f"\nPrice per unit statistics:")
 print(df['price_per_unit'].describe())
 
-# ============================================================
-# 5. SELECT FEATURES
-# ============================================================
+# SELECT FEATURES
 print("\n5. SELECTING FEATURES...")
 print("-" * 40)
 
@@ -137,9 +130,7 @@ print(f"Target variable: Quantity")
 print(f"\nFeature matrix shape: {X.shape}")
 print(f"Target vector shape: {y.shape}")
 
-# ============================================================
-# 6. TRAIN/TEST SPLIT
-# ============================================================
+# TRAIN/TEST SPLIT
 print("\n6. TRAIN/TEST SPLIT...")
 print("-" * 40)
 
@@ -150,9 +141,8 @@ X_train, X_test, y_train, y_test = train_test_split(
 print(f"Training set: {X_train.shape[0]} samples")
 print(f"Test set: {X_test.shape[0]} samples")
 
-# ============================================================
-# 7. TRAIN SIMPLE MODELS
-# ============================================================
+
+# TRAIN SIMPLE MODELS
 print("\n7. TRAINING MODELS...")
 print("-" * 40)
 
@@ -168,9 +158,7 @@ rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
 rf_model.fit(X_train, y_train)
 rf_predictions = rf_model.predict(X_test)
 
-# ============================================================
-# 8. COMPARE MODEL PERFORMANCE
-# ============================================================
+# COMPARE MODEL PERFORMANCE
 print("\n8. MODEL PERFORMANCE COMPARISON...")
 print("-" * 40)
 
@@ -200,16 +188,15 @@ else:
     best_model_name = "Linear Regression"
     print(f"\nBest Model: {best_model_name} (higher R2 score)")
 
-# ============================================================
-# 9. SAVE THE BEST MODEL
-# ============================================================
+
+#SAVE THE BEST MODEL
 print("\n9. SAVING THE BEST MODEL...")
 print("-" * 40)
 
 joblib.dump(best_model, 'model.pkl')
 print(f"✓ Model saved as: model.pkl")
 
-# Also save feature names for reference
+# feature names for reference
 joblib.dump(features, 'feature_names.pkl')
 print(f"✓ Feature names saved as: feature_names.pkl")
 
