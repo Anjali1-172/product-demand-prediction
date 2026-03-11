@@ -4,7 +4,7 @@ A beginner-friendly data science project that predicts product demand using the 
 
 ---
 
-## 🎯 Project Goal
+## Project Goal
 
 The goal of this project is to **predict product demand (Quantity)** based on sales data features like sales amount, discount, and profit.
 
@@ -172,16 +172,3 @@ This project demonstrates:
 - **Simple Approach**: This project intentionally avoids complex ML pipelines to make it easy to understand.
 - **Feature Engineering**: Creating `price_per_unit` helps the model understand the relationship between sales and quantity.
 
----
-
-## 🤝 Contributing
-
-Feel free to modify and expand this project! Some ideas:
-- Try different machine learning models
-- Add more features
-- Improve the Streamlit interface
-- Create more visualizations
-
----
-
-Happy Learning! 🎓
