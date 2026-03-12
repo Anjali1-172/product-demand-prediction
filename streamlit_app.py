@@ -79,26 +79,24 @@ if model_loaded:
     st.markdown("---")
 
  if st.button("🔮 Predict Demand", type="primary", use_container_width=True):
+     # Calculate profit_ratio (same as training)
+     profit_ratio = profit / sales if sales != 0 else 0
+     # Send 4 features to model
+     input_features = np.array([[sales, discount, profit, profit_ratio]])
 
-    # Calculate profit_ratio (same as training)
-    profit_ratio = profit / sales if sales != 0 else 0
+     prediction = model.predict(input_features)[0]
 
-    # Send 4 features to model
-    input_features = np.array([[sales, discount, profit, profit_ratio]])
+     predicted_quantity = max(1, round(prediction))
 
-    prediction = model.predict(input_features)[0]
+     st.success("Prediction Complete!")
 
-    predicted_quantity = max(1, round(prediction))
-
-    st.success("Prediction Complete!")
-
-    st.markdown(f"""
-    <div style="background-color:#f0f8ff;padding:20px;border-radius:10px;text-align:center">
-    <h3>Predicted Demand</h3>
-    <h1>{predicted_quantity}</h1>
-    <p>Units</p>
-    </div>
-    """, unsafe_allow_html=True)
+     st.markdown(f"""
+     <div style="background-color:#f0f8ff;padding:20px;border-radius:10px;text-align:center">
+     <h3>Predicted Demand</h3>
+     <h1>{predicted_quantity}</h1>
+     <p>Units</p>
+     </div>
+     """, unsafe_allow_html=True)
 
 
 st.markdown("---")
