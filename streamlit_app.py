@@ -78,33 +78,27 @@ if model_loaded:
 
     st.markdown("---")
 
-    if st.button("🔮 Predict Demand", type="primary", use_container_width=True):
+ if st.button("🔮 Predict Demand", type="primary", use_container_width=True):
 
-        profit_ratio = profit / sales if sales != 0 else 0
+    # Calculate profit_ratio (same as training)
+    profit_ratio = profit / sales if sales != 0 else 0
 
-        input_features = np.array([[sales, discount, profit, profit_ratio]])
+    # Send 4 features to model
+    input_features = np.array([[sales, discount, profit, profit_ratio]])
 
-        prediction = model.predict(input_features)[0]
+    prediction = model.predict(input_features)[0]
 
-        predicted_quantity = max(1, round(prediction))
+    predicted_quantity = max(1, round(prediction))
 
-        st.success("Prediction Complete!")
+    st.success("Prediction Complete!")
 
-        st.markdown(f"""
-        <div style="background-color:#f0f8ff;padding:20px;border-radius:10px;text-align:center">
-        <h3>Predicted Demand</h3>
-        <h1>{predicted_quantity}</h1>
-        <p>Units</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("---")
-
-        col1, col2, col3 = st.columns(3)
-
-        col1.metric("Sales", f"${sales:.2f}")
-        col2.metric("Discount", f"{discount*100:.0f}%")
-        col3.metric("Profit", f"${profit:.2f}")
+    st.markdown(f"""
+    <div style="background-color:#f0f8ff;padding:20px;border-radius:10px;text-align:center">
+    <h3>Predicted Demand</h3>
+    <h1>{predicted_quantity}</h1>
+    <p>Units</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 
 st.markdown("---")
